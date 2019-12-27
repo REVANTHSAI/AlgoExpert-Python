@@ -16,13 +16,16 @@ def branchSums(root):
 	sum_list = []
     return branchSums_reccursive_helper(root,sum_list,current_sum = 0)
 
+# In reccusrive call we need to pass the current_ sum and the sum_list down the tree.
 def branchSums_reccursive_helper(current_node,sum_list,current_sum):
 
+    # If node is null return.(To handle cases where left or right nodes are null)
 	if current_node == None:
 		return
 
 	current_sum += current_node.value
 
+    # On reaching a leaf node. Append the sum to the sum list
 	if current_node.left == None and current_node.right== None:
 		sum_list.append(current_sum)
 

@@ -1,3 +1,5 @@
+# Sample Input - "xyz", 2
+# Sampel Output - "zab"
 # Time - O(N) Space - O(N)
 def caesarCipherEncryptor(string, key):
 	newLetter = []

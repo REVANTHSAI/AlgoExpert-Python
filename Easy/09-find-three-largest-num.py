@@ -1,3 +1,4 @@
+# Write a function that takes in array of intergers and returns a sorted array of three largest integers
 # Time - O(N) Space - O(1)
 def findThreeLargestNumbers(array):
 	result = [None,None,None]

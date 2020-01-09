@@ -27,27 +27,32 @@ class MinHeap:
         # Do not edit the line below.
         self.heap = self.buildHeap(array)
 
+# O(N) Time | O(1) Space
     def buildHeap(self, array):
 		first_parent_index = (len(array)-2) // 2
 		for current_index in reversed(range(first_parent_index+1)):
 			self.siftDown(current_index,len(array)-1,array)
         return array
 
+# O(Log N) or O(H) Time | O(1) Space
     def siftDown(self,current_index,end_index,heap):
 		child_one_index = 2 * current_index + 1
+		# Select min of two child nodes to be swapped with the parent node
 		while child_one_index <= end_index:
 			child_two_index = 2 * current_index + 2 if 2 * current_index + 2 <= end_index else -1
 			if child_two_index != -1 and heap[child_one_index] > heap[child_two_index]:
 				index_to_swap = child_two_index
 			else:
 				index_to_swap = child_one_index
+	    # Swap the selected child node with the parent node
             if heap[current_index] > heap[index_to_swap]:
                 self.swap(current_index,index_to_swap,heap)
                 current_index = index_to_swap
                 child_one_index = 2 * current_index + 1
             else:
                 return
-
+	
+# O(log N) or O(D) Time | O(1) Space
     def siftUp(self,current_index,heap):
 		parent_index = (current_index - 1) // 2
 		while parent_index >= 0 and heap[parent_index] > heap[current_index]:
@@ -55,9 +60,11 @@ class MinHeap:
 			current_index = parent_index
 			parent_index = (current_index-1) // 2
 
+# O(1) Time | O(1) Space
     def peek(self):
         return self.heap[0]
 
+# O(Log N) or O(H) Time | O(1) Space
     def remove(self):
 		last_index = len(self.heap)-1
 		self.swap(0,last_index,self.heap)
@@ -65,6 +72,7 @@ class MinHeap:
 		self.siftDown(0,len(self.heap)-1,self.heap)
 		return value_to_remove
 
+# O(log N) or O(D) Time | O(1) Space
     def insert(self, value):
 		self.heap.append(value)
 		self.siftUp(len(self.heap)-1,self.heap)

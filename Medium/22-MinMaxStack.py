@@ -14,8 +14,8 @@ class MinMaxStack:
 # O(1) Time | O(1) Space
     def pop(self):
         if self.stack:
-			self.min_max_stack.pop(-1)
-			return self.stack.pop(-1)
+		self.min_max_stack.pop(-1)
+		return self.stack.pop(-1)
 		else:
 			return
 

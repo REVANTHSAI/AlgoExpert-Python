@@ -1,7 +1,16 @@
 ''''
 Question -
+You have a list of student scores on the final exam and you want to reward sudents.
+1. All students must receive atleast one reward
+2. Any given student must receive strictly more rwards than the adjacent student
+   with lower score and must receive fewer rewards than the adjacent stident with
+   higher score.
+Assuming all scores are unique, write a function that takes in a list of scores and returns
+the minimum number of rewards.
+
 Sample Input - [8,4,2,1,3,6,7,9,5]
-Sample Output - 25 Eg- ([4,3,2,1,2,3,4,5,1])
+Sample Output - 25 Eg- ([])
+
 Time - O(N^2) | Space - O(N)
 Solution 1 -
 1. Compare every element to the next element in the scores list.
@@ -11,6 +20,7 @@ while j > 0 and scores[j-1] > scores[j]:
 	result[j-1] = max(result[j-1],result[j]+1)
 Here 'max' is important to handle edgecase inputs like - [8,4,2,1,3,6,7,9,5]
 ''''
+
 def minRewards(scores):
 	result = [1 for _ in scores]
 	for i in range(1,len(scores)):

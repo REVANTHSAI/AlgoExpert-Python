@@ -1,7 +1,7 @@
 ''''
 Question -
 Sample Input - [8,4,2,1,3,6,7,9,5]
-Sample Output - 25 Eg- ([])
+Sample Output - 25 Eg- ([4,3,2,1,2,3,4,5,1])
 Time - O(N^2) | Space - O(N)
 Solution 1 -
 1. Compare every element to the next element in the scores list.

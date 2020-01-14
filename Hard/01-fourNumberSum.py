@@ -1,5 +1,12 @@
+''''
+Write a function to take in a non-empty array of distinct integers and an interger
+representing a target Sum.
+Sample Input - [7,6,4,-1,1,2],16
+Sample Output - [[7,6,4,-1],[7,6,1,2]]
+''''
+
 # Worst Case Complexity - Space - O(N^2) | Time - O(N^3) (When Hash table has N pairs mapped to a single sum value)
-# Average Case Complexity - Space - O(N^2) | Time O(N^3) 
+# Average Case Complexity - Space - O(N^2) | Time O(N^3)
 def fourNumberSum(array, targetSum):
 	result = []
     sum_map = {}

@@ -1,21 +1,19 @@
+# Worst Case Complexity - Space - O(N^2) | Time - O(N^3) (When Hash table has N pairs mapped to a single sum value)
+# Average Case Complexity - Space - O(N^2) | Time O(N^3) 
 def fourNumberSum(array, targetSum):
-    result = []
-    for i in range(len(array)):
-        for j in range(i+1,len(array)):
-            temp_map = {}
-            two_num_sum = array[i]+array[j]
-            remaining_two_num_sum = targetSum-two_num_sum
-            for index in range(len(array)):
-                if index == i or index == j:
-                    continue
-                remaining_sum = remaining_two_num_sum - array[index]
-                if (remaining_sum) in temp_map:
-                    result.append([array[i],array[j],array[index],remaining_sum])
-                    break
-                else:
-                    temp_map[array[index]] = True
-    return result
-
-if __name__ == '__main__':
-    result = fourNumberSum([7,6,4,-1,1,2],16)
-    print(result)
+	result = []
+    sum_map = {}
+	for i in range(1,len(array)-1):
+		for j in range(i+1,len(array)):
+			current_sum = array[i]+array[j]
+			diff = targetSum-current_sum
+			if diff in sum_map:
+				for pair in sum_map[diff]:
+					result.append(pair+[array[i],array[j]])
+		for k in range(i):
+			two_num_sum = array[k]+array[i]
+			if two_num_sum in sum_map:
+				sum_map[two_num_sum].append([array[i],array[k]])
+			else:
+				sum_map[two_num_sum] = [[array[i],array[k]]]
+	return result

@@ -4,7 +4,7 @@ Also, write a function to check if a string is a suffix of the input string.
 Trie Construction -
 Time - O(N^2) Space - O(N)
 Contains Func -
-Time - O(N) Space - O(N)
+Time - O(N) Space - O(1)
 ''''
 class SuffixTrie:
     def __init__(self, string):

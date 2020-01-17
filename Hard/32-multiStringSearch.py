@@ -70,29 +70,30 @@ class ModifiedSuffixTrie:
 
 ''''
 Solution 3 -
-Create a Siffix Trie of the smaller string
+Create a Trie of the smaller strings and check if the smaller string is
+contained in the bigger string
 ''''
 
 def multiStringSearch(bigString, smallStrings):
-    suffix_trie = SuffixTrie()
+    trie = Trie()
 	contained_small_strings = {}
 	for small_string in smallStrings:
-		suffix_trie.insert(small_string)
+		trie.insert(small_string)
 	for i in range(len(bigString)):
 		subString = bigString[i:]
-		trie_strings_contained_in_bigstring(subString,contained_small_strings,suffix_trie)
+		trie_strings_contained_in_bigstring(subString,contained_small_strings,trie)
 	return [(small_string in contained_small_strings) for small_string in smallStrings]
 
-def trie_strings_contained_in_bigstring(subString,contained_small_strings,suffix_trie):
-	current_node = suffix_trie.root
+def trie_strings_contained_in_bigstring(subString,contained_small_strings,trie):
+	current_node = trie.root
 	for char in subString:
 		if char not in current_node:
 			break
 		current_node = current_node[char]
-		if suffix_trie.end_indicator in current_node:
-			contained_small_strings[current_node[suffix_trie.end_indicator]] = 'True'
+		if trie.end_indicator in current_node:
+			contained_small_strings[current_node[trie.end_indicator]] = 'True'
 
-class SuffixTrie:
+class Trie:
 	def __init__(self):
 		self.root = {}
 		self.end_indicator = '*'

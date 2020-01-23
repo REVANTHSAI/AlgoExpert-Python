@@ -75,24 +75,3 @@ def constructSubSequence(subSequence):
         i = currentEntry[2]
         j = currentEntry[3]
     return list(reversed(result))
-
-
-
-def longestCommonSubsequence_try(str1, str2):
-    subSequence = [[[None,0,None,None] for _ in range(len(str1)+1)] for _ in range(len(str2)+1)]
-    for i in range(1,len(str2)+1):
-        for j in range(1,len(str1)+1):
-            if str2[i-1] == str1[j-1]:
-                subSequence[i][j] = [str1[j-1],subSequence[i-1][j-1][1]+1,i-1,j-1]
-            else:
-                if subSequence[i-1][j][1] > subSequence[i][j-1][1]:
-                    subSequence[i][j] = [None,subSequence[i-1][j][1],i-1,j]
-                elif subSequence[i][j-1][1] >= subSequence[i-1][j][1]:
-                    subSequence[i][j] = [None,subSequence[i][j-1][1],i,j-1]
-    for list in subSequence:
-        print(list)
-
-if __name__ =='__main__':
-    str1 = "ZXVVYZW"
-    str2 = "XKYKZPW"
-    print(longestCommonSubsequence_try(str1,str2))

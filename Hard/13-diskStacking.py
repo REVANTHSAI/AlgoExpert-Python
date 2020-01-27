@@ -3,7 +3,6 @@ Disk Stacking -
 These integrs denote each disk's width,deapth and height respectively. Stack up
 these disks to maximize the total height of the stack. A disk must have stictly
 smaller width, deapth and height than any other disk below it.
-
 Sample Input - [[2,1,2],[3,2,3],[2,2,8],[2,3,4],[1,3,1],[4,4,5]]
 Sample Output - [[2,1,2],[3,2,3],[4,4,5]]
 Time - O(N^2)

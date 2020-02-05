@@ -1,7 +1,9 @@
 def underscorifySubstring(string, substring):
     locations = get_locations(string,substring)
+    print(locations)
     compress_string_locations(locations)
-    return underScorify(string,locations)
+    print(locations)
+    return populateUnderScores(string,locations)
 
 def get_locations(string,substring):
     i = 0
@@ -23,13 +25,17 @@ def compress_string_locations(substring_locations):
         else:
             i += 1
 
-def underScorify(string,substring_locations):
+def populateUnderScores(string,substring_locations):
     string_list = list(string)
     locations = []
     insert_offset = 0
     for location in substring_locations:
         locations.extend(location)
-    for i in range(len(locations)):
+    print(locations)
+    for i in range(len(substring_locations)):
+        first_insert_loc = substring_locations[0]
+        second_insert_loc = substring_locations[1]
+        current_insert_loc = first_insert_loc
         if locations[i] == 0:
             string_list = ['_']+string_list
             insert_offset += 1
@@ -45,10 +51,6 @@ def underScorify(string,substring_locations):
     return ''.join(string_list)
 
 if __name__ == '__main__':
-    string = 'ttttttttttttttbtttttctatawtatttttastvb'
-    subString = 'ttt'
-    substring_locations = get_locations(string,subString)
-    print substring_locations
-    compress_string_locations(substring_locations)
-    print substring_locations
-    print(underScorify(string,substring_locations))
+    string = 'ababababa'
+    subString = 'a'
+    print(underscorifySubstring(string,subString))
